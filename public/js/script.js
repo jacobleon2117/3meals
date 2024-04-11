@@ -12,38 +12,63 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(`/api/recipes?q=${query}`)
             .then(response => response.json())
             .then(data => {
-                console.log(data); // Process the data as needed
-                // UI with the fetched recipes
-                recipeList.innerHTML = ''; // Clear the list
-                data.hits.forEach(hit => {
-                    const listItem = document.createElement('li');
-                    const recipeTitle = document.createElement('h3');
-                    recipeTitle.textContent = hit.recipe.label;
-                    listItem.appendChild(recipeTitle);
-    
-                    const recipeImage = document.createElement('img');
-                    recipeImage.src = hit.recipe.image;
-                    listItem.appendChild(recipeImage);
-    
-                    const nutritionInfo = document.createElement('p');
-                    // Display calories with one decimal place
-                    nutritionInfo.textContent = `Calories: ${hit.recipe.calories.toFixed(1)}`;
-                    listItem.appendChild(nutritionInfo);
-    
-                    // API response includes an array of ingredients
-                    const ingredientsList = document.createElement('ul');
-                    hit.recipe.ingredients.forEach(ingredient => {
-                        const ingredientItem = document.createElement('li');
-                        ingredientItem.textContent = ingredient.text; // ingredient is an object with a 'text' property
-                        ingredientsList.appendChild(ingredientItem);
+                console.log(data);
+                recipeList.innerHTML = '';
+                if (data.hits.length === 0) {
+                    fetchClosestMatches(query);
+                } else {
+                    data.hits.forEach(hit => {
+                        const recipeCard = createRecipeCard(hit.recipe);
+                        recipeList.appendChild(recipeCard);
                     });
-                    listItem.appendChild(ingredientsList);
-
-                    recipeList.appendChild(listItem);
-                });
+                }
             })
             .catch(error => {
                 console.error('Error fetching recipes:', error);
+            });
+    }
+
+    function createRecipeCard(recipe) {
+        const recipeCard = document.createElement('div');
+        recipeCard.classList.add('recipe-card');
+
+        const recipeTitle = document.createElement('h3');
+        recipeTitle.textContent = recipe.label;
+        recipeCard.appendChild(recipeTitle);
+
+        const recipeImage = document.createElement('img');
+        recipeImage.src = recipe.image;
+        recipeCard.appendChild(recipeImage);
+
+        const caloriesInfo = document.createElement('p');
+        caloriesInfo.textContent = `Calories: ${recipe.calories.toFixed(1)}`;
+        recipeCard.appendChild(caloriesInfo);
+
+        const ingredientsList = document.createElement('ul');
+        recipe.ingredients.forEach(ingredient => {
+            const ingredientItem = document.createElement('li');
+            ingredientItem.textContent = ingredient.text;
+            ingredientsList.appendChild(ingredientItem);
+        });
+        recipeCard.appendChild(ingredientsList);
+
+        return recipeCard;
+    }
+
+    function fetchClosestMatches(query) {
+        fetch(`/api/closest-matches?q=${query}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                recipeList.innerHTML = '<p>No matching recipes found. Here are some suggestions:</p>';
+                data.matches.forEach(match => {
+                    const matchItem = document.createElement('p');
+                    matchItem.textContent = match;
+                    recipeList.appendChild(matchItem);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching closest matches:', error);
             });
     }
 });

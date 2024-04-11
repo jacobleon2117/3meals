@@ -52,6 +52,15 @@ app.get('/api/recipes', async (req, res) => {
     }
 });
 
+// Route to handle closest matches
+app.get('/api/closest-matches', (req, res) => {
+    const query = req.query.q; // Get the search query from the request
+    // Perform fuzzy matching logic to find closest matches to the query
+    // Dummy response for demonstration purposes
+    const closestMatches = ['Spaghetti Carbonara', 'Chicken Alfredo', 'Vegetable Stir-Fry'];
+    res.json({ matches: closestMatches });
+});
+
 // Start the server
 app.listen(port, () => {
  console.log(`Server is listening at http://localhost:${port}`);
