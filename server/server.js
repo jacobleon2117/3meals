@@ -4,7 +4,7 @@ const path = require('path');
 const cors = require('cors');
 
 const app = express();
-const port = 3000;
+const port = 3000; // Port number
 
 // Enable CORS for all routes
 app.use(cors());
@@ -12,7 +12,7 @@ app.use(cors());
 // Parse JSON request bodies
 app.use(express.json());
 
-// Connect to MongoDB
+// MongoDB
 mongoose.connect('mongodb+srv://jacobleon2117:sperryOK2117!@dev-cluster.xjrjri1.mongodb.net/', {
  useNewUrlParser: true,
  useUnifiedTopology: true
@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
  res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
 
-// Your Edamam API credentials
+// Edamam API credentials
 const edamamAppId = '24040aba';
 const edamamAppKey = 'ab7ab802935cabc9918ec92b78f40c4d';
 
@@ -42,7 +42,7 @@ app.get('/api/recipes', async (req, res) => {
     const url = `https://api.edamam.com/search?q=${query}&app_id=${edamamAppId}&app_key=${edamamAppKey}`;
 
     try {
-        const fetch = (await import('node-fetch')).default; // Use dynamic import
+        const fetch = (await import('node-fetch')).default; // dynamic import
         const response = await fetch(url);
         const data = await response.json();
         res.json(data); // Send the data back to the client
