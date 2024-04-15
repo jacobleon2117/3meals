@@ -1,0 +1,159 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Light Grey */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #ff6347; /* Tomato */
+}
+
+.logo-container {
+    width: 100px;
+}
+
+.logo {
+    width: 100%;
+}
+
+.nav-bar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav-bar li {
+    margin-left: 1rem;
+}
+
+.nav-bar a {
+    color: #ffffff; /* White */
+    text-decoration: none;
+}
+
+.search-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#searchInput {
+    width: 300px;
+    height: 40px;
+    padding: 5px;
+    font-size: 18px;
+}
+
+/* Recipe Card Container */
+#recipeList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+/* Recipe Card Container */
+#recipeList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Align cards in the middle */
+    max-width: 1200px; /* Limit maximum width */
+    margin: 0 auto; /* Center horizontally */
+}
+
+/* Recipe Card */
+.recipe-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 10px; /* Add margin to create space between cards */
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    width: calc(33.33% - 20px); /* Three cards per row with margin */
+    max-width: 300px; /* Limit maximum width of each card */
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+}
+
+.recipe-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+}
+
+.recipe-card-content {
+    padding: 10px;
+}
+
+.recipe-card-title {
+    font-size: 14px; /* Adjust title font size */
+    margin-bottom: 5px;
+}
+
+.recipe-card-calories {
+    font-size: 12px; /* Adjust calories font size */
+    color: #666;
+}
+
+.recipe-card-ingredients {
+    margin-top: 10px; /* Increase margin for better separation */
+    font-size: 12px; /* Adjust font size for ingredients */
+    line-height: 1.5; /* Adjust line height for better readability */
+}
+
+.recipe-card-ingredients li {
+    margin-bottom: 3px;
+}
+
+/* Search Form */
+.search-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#searchForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Take full width of the container */
+    border-radius: 20px; /* Rounded corners */
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 1200px; /* Limit maximum width */
+    margin: 0 auto; /* Center horizontally */
+}
+
+#searchInput {
+    flex: 1; /* Take remaining space */
+    height: 30px;
+    padding: 0 10px;
+    border: none;
+    font-size: 0.8rem;
+    border-radius: 20px 0 0 20px; /* Rounded left side */
+}
+
+#searchInput:focus {
+    outline: none;
+}
+
+#searchButton {
+    background-color: #ff6347;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    border-radius: 0 20px 20px 0; /* Rounded right side */
+}
+
+#searchButton:hover {
+    background-color: #e05231;
+}
