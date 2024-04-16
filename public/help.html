@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover delicious recipes with 3MEALS. Search for your favorite dishes and find new ones to try.">
+    <title>3MEALS - Help</title>
+    <link rel="icon" href="path/to/favicon.ico">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <video autoplay loop muted playsinline>
+            <source src="../images/BG.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <div class="logo-text">
+                        <span class="letter" id="m-letter">M</span>
+                        <span class="letter">E</span>
+                        <span class="letter">A</span>
+                        <span class="letter">L</span>
+                        <span class="letter">S</span>
+                    </div>
+                </a>
+            </div>
+            <nav class="navbar">
+                <a href="index.html" class="nav-link" id="homeLink">Home</a>
+                <a href="help.html" class="nav-link active" id="helpLink">Help</a>
+                <!-- Search form and button -->
+                <div class="sb-section">
+                    <form id="searchForm" class="search-form">
+                        <input type="text" id="searchInput" class="search-input" placeholder="Search recipes...">
+                        <button type="submit" class="search-button">Search</button>
+                    </form>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="recipe-list-container">
+            <div id="recipeList" class="recipe-list">
+                <!-- Recipe cards will be dynamically added here -->
+            </div>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

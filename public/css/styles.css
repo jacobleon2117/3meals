@@ -1,159 +1,234 @@
-body {
-    font-family: Arial, sans-serif;
+/* Resetting default margin and padding */
+* {
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0; /* Light Grey */
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: #ff6347; /* Tomato */
-}
-
-.logo-container {
-    width: 100px;
-}
-
-.logo {
-    width: 100%;
-}
-
-.nav-bar ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
-
-.nav-bar li {
-    margin-left: 1rem;
-}
-
-.nav-bar a {
-    color: #ffffff; /* White */
-    text-decoration: none;
-}
-
-.search-container {
-    text-align: center;
-    margin-top: 20px;
-}
-
-#searchInput {
-    width: 300px;
-    height: 40px;
-    padding: 5px;
-    font-size: 18px;
-}
-
-/* Recipe Card Container */
-#recipeList {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-/* Recipe Card Container */
-#recipeList {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Align cards in the middle */
-    max-width: 1200px; /* Limit maximum width */
-    margin: 0 auto; /* Center horizontally */
-}
-
-/* Recipe Card */
-.recipe-card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 10px; /* Add margin to create space between cards */
-    overflow: hidden;
-    transition: transform 0.3s ease-in-out;
-    width: calc(33.33% - 20px); /* Three cards per row with margin */
-    max-width: 300px; /* Limit maximum width of each card */
-    text-align: center;
-    padding: 10px;
     box-sizing: border-box;
 }
 
-.recipe-card:hover {
-    transform: translateY(-5px);
+/* Setting up default font and background */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: white; /* Light gray background */
+}
+
+/* Header styles */
+.header {
+    position: relative;
+    height: 200px; /* Adjust the height as needed */
+    overflow: hidden; /* Hide any part of the video that extends beyond the header */
+    display: flex; /* Use Flexbox */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+}
+
+/* Ensure the video maintains its aspect ratio and fits within the viewport */
+.header video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the entire header */
+    z-index: -1; /* Ensure the video is behind the content */
+    max-width: 100%; /* Ensure the video does not exceed the container width */
+    max-height: 100%; /* Ensure the video does not exceed the container height */
+    filter: blur(5px);
+}
+
+/* Container styles */
+.container {
+    position: relative;
+    z-index: 1; /* Ensure the container is above the video */
+    display: flex; /* Use Flexbox */
+    justify-content: space-between; /* Space logo, navbar, and search bar evenly */
+    align-items: center; /* Center items vertically */
+    width: 100%; /* Ensure the container takes the full width */
+    padding: 0 100px; /* Increase horizontal padding for better spacing */
+}
+
+/* Logo styles */
+.logo {
+    display: flex;
+    align-items: center; /* Align items vertically */
+}
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+    align-items: center; /* Align items vertically */
+}
+
+/* Search bar section */
+.sb-section {
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Center the search form vertically */
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+/* Adjustments for spacing */
+.logo,
+.navbar,
+.sb-section {
+    margin: 0 20px; /* Add margin to create space between elements */
+}
+
+/* Meal button styles */
+.meal-button {
+    padding: 10px 20px; /* Adjusted padding */
+    font-size: 16px;
+    border: 1px solid #000; /* Add black border */
+    border-radius: 20px;
+    background-color: #000; /* Black button color */
+    color: #fff; /* White text color */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition on hover */
+}
+
+.meal-button:hover {
+    background-color: #333; /* Darker color on hover */
+}
+
+/* Nav-link styles */
+.nav-link {
+    padding: 12px 20px; /* Increase padding for larger button */
+    font-size: 16px;
+    color: #000; /* Black text color */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s; /* Smooth transition on hover */
+    margin-left: 20px; /* Add some space between search button and navbar */
+}
+
+.nav-link:hover {
+    color: #333; /* Darker color on hover */
+}
+
+/* Make the active nav links bold and change color */
+.nav-link.active {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Make the logo clickable */
+.logo a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Ensure the logo-text is displayed inline to keep the letters together */
+.logo-text {
+    display: inline-flex; /* Use inline-flex to keep the letters together */
+    align-items: center; /* Align items vertically */
+    font-size: 2em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Style for the "M" to look like a "3" */
+#m-letter {
+    transform: rotate(90deg); /* Rotate the "M" to look like a "3" */
+    transition: transform 0.3s ease; /* Smooth transition for the transformation */
+    color: coral;
+}
+
+/* Hover effect to rotate the "M" back to an "M" */
+#m-letter:hover {
+    transform: rotate(0deg); /* On hover, the "M" transforms back to an "M" */
+}
+
+/* Ensure the letters are spaced correctly */
+.letter {
+    margin-right: 5px; /* Add some space between the letters */
+}
+
+/* Adjust the last letter to remove extra space */
+.letter:last-child {
+    margin-right: 0; /* Remove extra space after the last letter */
+}
+
+@keyframes mTo3 {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(10px);
+    }
+}
+
+.m-to-3 {
+    transform: translateY(0); /* Reset the "M" to the "3" shape */
+}
+
+/* Container for the meal buttons */
+.meal-buttons-container {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    align-items: center; /* Center the buttons vertically */
+    height: 100vh; /* Full viewport height */
+    flex-direction: column; /* Stack buttons vertically */
+}
+
+/* Meal buttons container */
+.meal-buttons {
+    display: flex;
+    gap: 10px; /* Add some space between the buttons */
+    flex-direction: row; /* Align buttons in a row */
+    justify-content: center; /* Center the buttons horizontally */
+    padding-top: 50px;
+}
+
+/* Container for the recipe list */
+.recipe-list-container {
+    display: flex;
+    flex-direction: column; /* Stack cards vertically */
+    align-items: center; /* Center cards horizontally */
+    padding: 20px;
+    width: 100%; /* Ensure the container takes the full width */
+    margin: 0 auto; /* Center the container itself */
+}
+
+/* Recipe card styling with gradient background */
+.recipe-card {
+    background: linear-gradient(to right, #ff7e5f, #feb47b); /* Gradient background */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Add space between cards */
+    width: 100%; /* Full width of the container */
+    padding: 20px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+}
+
+.recipe-card h3 {
+    margin-top: 0; /* Remove top margin from the title */
+    margin-bottom: 10px; /* Add some space below the title */
 }
 
 .recipe-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px 10px 0 0;
+    width: 100%; /* Full width of the card */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px 5px 0 0; /* Rounded corners on top */
+    margin-bottom: 10px; /* Add some space below the image */
 }
 
-.recipe-card-content {
-    padding: 10px;
+.recipe-card p {
+    margin-top: 10px; /* Add some space above the calories info */
+    margin-bottom: 10px; /* Add some space below the calories info */
 }
 
-.recipe-card-title {
-    font-size: 14px; /* Adjust title font size */
-    margin-bottom: 5px;
+.recipe-card ul {
+    list-style-type: none; /* Remove bullet points */
+    padding-left: 0; /* Remove padding on the left */
 }
 
-.recipe-card-calories {
-    font-size: 12px; /* Adjust calories font size */
-    color: #666;
-}
-
-.recipe-card-ingredients {
-    margin-top: 10px; /* Increase margin for better separation */
-    font-size: 12px; /* Adjust font size for ingredients */
-    line-height: 1.5; /* Adjust line height for better readability */
-}
-
-.recipe-card-ingredients li {
-    margin-bottom: 3px;
-}
-
-/* Search Form */
-.search-container {
-    text-align: center;
-    margin-top: 20px;
-}
-
-#searchForm {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%; /* Take full width of the container */
-    border-radius: 20px; /* Rounded corners */
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 1200px; /* Limit maximum width */
-    margin: 0 auto; /* Center horizontally */
-}
-
-#searchInput {
-    flex: 1; /* Take remaining space */
-    height: 30px;
-    padding: 0 10px;
-    border: none;
-    font-size: 0.8rem;
-    border-radius: 20px 0 0 20px; /* Rounded left side */
-}
-
-#searchInput:focus {
-    outline: none;
-}
-
-#searchButton {
-    background-color: #ff6347;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    border-radius: 0 20px 20px 0; /* Rounded right side */
-}
-
-#searchButton:hover {
-    background-color: #e05231;
+.recipe-card li {
+    margin-bottom: 5px; /* Add some space between ingredients */
 }
