@@ -1,23 +1,26 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const searchForm = document.getElementById('searchForm');
     const recipeList = document.getElementById('recipeList');
 
-    // Fetch recipes when the page loads
-    fetchRecipes('');
+    // Fetch pre-loaded recipes when the page loads
+    fetchRecipes("chicken"); // You can change "chicken" to any default query you want to use
+
+    searchForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const query = document.getElementById('searchInput').value;
+        fetchRecipes(query);
+    });
 
     function fetchRecipes(query) {
         fetch(`/api/recipes?q=${query}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                recipeList.innerHTML = '';
-                if (data.hits.length === 0) {
-                    fetchClosestMatches(query);
-                } else {
-                    data.hits.forEach(hit => {
-                        const recipeCard = createRecipeCard(hit.recipe);
-                        recipeList.appendChild(recipeCard);
-                    });
-                }
+                recipeList.innerHTML = ''; // Clear previous recipe cards
+                data.hits.forEach(hit => {
+                    const recipeCard = createRecipeCard(hit.recipe);
+                    recipeList.appendChild(recipeCard);
+                });
             })
             .catch(error => {
                 console.error('Error fetching recipes:', error);
@@ -33,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         recipeCard.appendChild(recipeTitle);
 
         const recipeImage = document.createElement('img');
-        recipeImage.src = recipe.image || 'images/placeholder_recipe.jpg'; // Provide a placeholder image URL
+        recipeImage.src = recipe.image;
         recipeCard.appendChild(recipeImage);
 
         const caloriesInfo = document.createElement('p');
@@ -69,23 +72,4 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('This recipe is already in your favorites!');
         }
     }
-
-    function fetchClosestMatches(query) {
-        fetch(`/api/closest-matches?q=${query}`)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                recipeList.innerHTML = '<p>No matching recipes found. Here are some suggestions:</p>';
-                data.matches.forEach(match => {
-                    const matchItem = document.createElement('p');
-                    matchItem.textContent = match;
-                    recipeList.appendChild(matchItem);
-                });
-            })
-            .catch(error => {
-                console.error('Error fetching closest matches:', error);
-            });
-    }
-
 });
-
