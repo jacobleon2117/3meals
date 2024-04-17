@@ -10,36 +10,23 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background-color: #ff6347; /* Tomato */
+    background-color: wheat; /* Tomato */
 }
 
-.logo-container {
-    width: 100px;
+.header-content {
+    display: flex;
+    justify-content: space-between; /* Align logo and search bar on opposite sides */
+    align-items: center; /* Center vertically */
+    width: 100%; /* Ensure it takes the full width of the header */
 }
 
+
+.logo-container, .search-container {
+    display: flex; /* Align items horizontally */
+    align-items: center; /* Center vertically */
+}
 .logo {
     width: 100%;
-}
-
-.nav-bar ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
-
-.nav-bar li {
-    margin-left: 1rem;
-}
-
-.nav-bar a {
-    color: #ffffff; /* White */
-    text-decoration: none;
-}
-
-.search-container {
-    text-align: center;
-    margin-top: 20px;
 }
 
 #searchInput {
@@ -53,20 +40,15 @@ header {
 #recipeList {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-}
-/* Recipe Card Container */
-#recipeList {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Align cards in the middle */
+    justify-content: center; /* Center items when there are fewer than three in a row */
     max-width: 1200px; /* Limit maximum width */
     margin: 0 auto; /* Center horizontally */
+    gap: 20px; /* Add some gap between the cards for better spacing */
 }
 
 /* Recipe Card */
 .recipe-card {
-    background-color: #fff;
+    background-color: wheat;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin: 10px; /* Add margin to create space between cards */
@@ -100,7 +82,7 @@ header {
 
 .recipe-card-calories {
     font-size: 12px; /* Adjust calories font size */
-    color: #666;
+    color: black;
 }
 
 .recipe-card-ingredients {
@@ -114,19 +96,13 @@ header {
 }
 
 /* Search Form */
-.search-container {
-    text-align: center;
-    margin-top: 20px;
-}
-
 #searchForm {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%; /* Take full width of the container */
-    border-radius: 20px; /* Rounded corners */
+    border-radius: 20px; /* Rounded corners for the form container */
     overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     max-width: 1200px; /* Limit maximum width */
     margin: 0 auto; /* Center horizontally */
 }
@@ -138,6 +114,7 @@ header {
     border: none;
     font-size: 0.8rem;
     border-radius: 20px 0 0 20px; /* Rounded left side */
+    margin-right: 10px; /* Add margin to the right of the input */
 }
 
 #searchInput:focus {
@@ -152,8 +129,40 @@ header {
     cursor: pointer;
     font-size: 0.8rem;
     border-radius: 0 20px 20px 0; /* Rounded right side */
+    margin-left: 10px; /* Add margin to the left of the button */
 }
-
 #searchButton:hover {
     background-color: #e05231;
+}
+
+/* MEALS Logo Effect */
+#m-letter {
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+    color: coral;
+}
+
+#m-letter:hover {
+    transform: rotate(0deg);
+}
+
+.letter {
+    margin-right: 5px;
+}
+
+.letter:last-child {
+    margin-right: 0;
+}
+
+/* Ensure the cards are centered when there are fewer than three in a row */
+@media (max-width: 1020px) {
+    .recipe-card {
+        width: calc(50% - 20px); /* Two cards per row with margin */
+    }
+}
+
+@media (max-width: 600px) {
+    .recipe-card {
+        width: 100%; /* One card per row */
+    }
 }
