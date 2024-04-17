@@ -309,17 +309,16 @@ h2 {
 }
 
 .remove-button {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background: none;
+    background-color: transparent;
     border: none;
-    color: #999;
-    font-size: 14px; /* Make the button smaller */
+    color: #fff;
+    font-size: 18px;
+    width: 30px; /* Set the width and height to create a circle */
+    height: 30px;
+    border-radius: 50%; /* Make it a circle */
     cursor: pointer;
-    transition: color 0.3s ease;
-    width: 20px; /* Fix the width of the button */
-    height: 20px; /* Fix the height of the button */
-    line-height: 1; /* Center the "X" horizontally */
-    text-align: center; /* Center the "X" vertically */
+}
+
+.remove-button:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Add a hover effect */
 }
