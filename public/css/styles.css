@@ -54,7 +54,6 @@ header {
     z-index: 1;
 }
 
-/* Recipe Card */
 .recipe-card {
     background-color: wheat;
     border-radius: 10px;
@@ -62,8 +61,8 @@ header {
     margin: 10px;
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
-    width: calc(33.33% - 20px);
-    max-width: 300px;
+    width: calc(33.33% - 20px); /* Adjust this width to fit three cards per row */
+    max-width: 300px; /* Maximum width of each card */
     text-align: center;
     padding: 10px;
     box-sizing: border-box;
@@ -165,16 +164,16 @@ header {
     margin-right: 0;
 }
 
-/* Ensure the cards are centered when there are fewer than three in a row */
+/* Ensure proper display on smaller screens */
 @media (max-width: 1020px) {
     .recipe-card {
-        width: calc(50% - 20px);
+        width: calc(50% - 20px); /* Adjust to fit two cards per row on smaller screens */
     }
 }
 
 @media (max-width: 600px) {
     .recipe-card {
-        width: 100%; /* One card per row */
+        width: 100%; /* Display one card per row on mobile devices */
     }
 }
 
