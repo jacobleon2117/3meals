@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const recipeList = document.getElementById('recipeList');
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+    // Display favorite recipes when the page loads
     displayFavoriteRecipes(favorites);
 
     function displayFavoriteRecipes(recipes) {
@@ -41,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         recipeCard.appendChild(ingredientsList);
 
+        // Instructions
         const instructionsTitle = document.createElement('h4');
         instructionsTitle.textContent = 'Instructions:';
         recipeCard.appendChild(instructionsTitle);
@@ -49,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         instructions.textContent = recipe.instructions || 'No instructions available.';
         recipeCard.appendChild(instructions);
 
+        // Remove button
         const removeButton = document.createElement('button');
         removeButton.textContent = 'Remove';
         removeButton.classList.add('remove-button');
@@ -58,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         recipeCard.appendChild(removeButton);
 
+        // Info button
         const infoButton = document.createElement('button');
         infoButton.textContent = 'i';
         infoButton.classList.add('info-button');
@@ -77,53 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (index !== -1) {
             favorites.splice(index, 1);
             localStorage.setItem('favorites', JSON.stringify(favorites));
-            displayFavoriteRecipes(favorites);
         }
-    }
-
-    function isFavorite(recipe) {
-        return favorites.some(favorite => favorite.label === recipe.label);
-    }
-
-    function toggleFavorite(recipe) {
-        const index = favorites.findIndex(favorite => favorite.label === recipe.label);
-        if (index === -1) {
-            favorites.push(recipe);
-        } else {
-            favorites.splice(index, 1);
-        }
-        localStorage.setItem('favorites', JSON.stringify(favorites));
-        displayFavoriteRecipes(favorites);
-    }
-
-    function updateAddToFavoritesButton(recipe) {
-        const addButton = document.createElement('button');
-        addButton.textContent = isFavorite(recipe) ? 'Already Added!' : 'Add to Favorites';
-        addButton.classList.add('add-button');
-        addButton.addEventListener('click', function() {
-            toggleFavorite(recipe);
-        });
-        return addButton;
-    }
-
-    function updateRecipeCardButtons() {
-        const recipeCards = document.querySelectorAll('.recipe-card');
-        recipeCards.forEach(card => {
-            const recipeTitle = card.querySelector('h3').textContent;
-            const recipeImage = card.querySelector('img').src;
-            const recipeCalories = parseInt(card.querySelector('.recipe-card-calories').textContent.split(' ')[1]);
-            const recipe = {
-                label: recipeTitle,
-                image: recipeImage,
-                calories: recipeCalories
-            };
-
-            const addButton = updateAddToFavoritesButton(recipe);
-            const existingButton = card.querySelector('.add-button');
-            if (existingButton) {
-                card.replaceChild(addButton, existingButton);
-            }
-        });
     }
 
     function showIngredients(recipe) {
@@ -144,6 +103,4 @@ document.addEventListener('DOMContentLoaded', function() {
             infoBox.remove();
         }
     }
-
-    updateRecipeCardButtons();
 });
