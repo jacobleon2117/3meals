@@ -1,15 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     const searchForm = document.getElementById('searchForm');
     const recipeList = document.getElementById('recipeList');
-    const mLetter = document.getElementById('m-letter'); // Select the "M" element
 
-    if (searchForm) { // Check if searchForm exists
-        searchForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            const query = document.getElementById('searchInput').value;
-            fetchRecipes(query);
-        });
-    }
+    searchForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const query = document.getElementById('searchInput').value;
+        fetchRecipes(query);
+    });
+
     function fetchRecipes(query) {
         fetch(`/api/recipes?q=${query}`)
             .then(response => response.json())
