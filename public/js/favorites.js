@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
         recipeCard.classList.add('recipe-card');
 
         const removeButton = document.createElement('button');
-        removeButton.textContent = '×';
+        removeButton.textContent = 'Remove'; // Changed button text to "Remove"
         removeButton.classList.add('remove-button');
         removeButton.addEventListener('click', function() {
             removeFromFavorites(recipe);

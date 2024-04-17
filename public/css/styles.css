@@ -305,16 +305,16 @@ h2 {
 }
 
 .remove-button {
-    background-color: transparent;
+    background-color: #ff6347; /* Change background color */
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
     border: none;
-    color: #fff;
-    font-size: 20px;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .remove-button:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: #e05231; /* Change hover background color */
 }
