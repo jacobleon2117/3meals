@@ -1,4 +1,3 @@
-/* CSS for the Entire Page */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -10,7 +9,6 @@ body {
     min-height: 50vh;
 }
 
-/* Header Styles */
 header {
     display: flex;
     justify-content: space-between;
@@ -42,7 +40,6 @@ header {
     margin-right: 10px;
 }
 
-/* Recipe Card Container */
 #recipeList {
     display: flex;
     flex-wrap: wrap;
@@ -61,23 +58,22 @@ header {
     margin: 10px;
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
-    width: calc(33.33% - 20px); /* Adjust this width to fit three cards per row */
-    max-width: 300px; /* Maximum width of each card */
+    width: calc(33.33% - 20px);
+    max-width: 300px;
     text-align: center;
     padding: 10px;
     box-sizing: border-box;
     position: relative;
 }
 
-/* Specify a fixed height for each row */
 .recipe-card-row {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin: 0 auto;
-    max-width: 1200px; /* Adjust as needed */
+    max-width: 1200px;
     gap: 20px;
-    height: auto; /* Set a fixed height for each row */
+    height: auto;
 }
 
 .recipe-card:hover {
@@ -114,7 +110,6 @@ header {
     margin-bottom: 3px;
 }
 
-/* Search Form */
 #searchForm {
     display: flex;
     justify-content: center;
@@ -155,7 +150,6 @@ header {
     background-color: #e05231;
 }
 
-/* MEALS Logo Effect */
 #m-letter {
     transform: rotate(90deg);
     transition: transform 0.3s ease;
@@ -175,16 +169,15 @@ header {
     margin-right: 0;
 }
 
-/* Ensure proper display on smaller screens */
 @media (max-width: 1020px) {
     .recipe-card {
-        width: calc(50% - 20px); /* Adjust to fit two cards per row on smaller screens */
+        width: calc(50% - 20px);
     }
 }
 
 @media (max-width: 600px) {
     .recipe-card {
-        width: 100%; /* Display one card per row on mobile devices */
+        width: 100%;
     }
 }
 
@@ -199,8 +192,6 @@ header {
     z-index: 0;
 } 
 
-
-/* Revert the footer positioning */
 footer {
     position: relative;
     z-index: 0;
@@ -224,7 +215,6 @@ footer {
     color: #ff6347;
 }
 
-/* Favorites Button */
 #favoritesButton {
     background: none;
     border: none;
@@ -239,12 +229,11 @@ footer {
 }
 
 #favoritesButton:focus {
-    outline: none; /* Remove focus outline */
+    outline: none;
 }
 
-/* Update the styles for consistency */
 #favoritesButton {
-    margin-right: 20px; /* Add some spacing between the button and other elements */
+    margin-right: 20px;
 }
 .home-button {
     display: inline-block;
@@ -262,7 +251,6 @@ footer {
     background-color: #e05231;
 }
 
-/* CSS for favorites.html */
 h1 {
     text-align: center;
     margin-top: 20px;
@@ -286,8 +274,8 @@ h2 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 2rem; /* Set the font size to 2rem */
-    font-family: Arial, sans-serif; /* Use the same font family */
+    font-size: 2rem;
+    font-family: Arial, sans-serif;
     color: #e05231;
 }
 
@@ -313,7 +301,7 @@ h2 {
 }
 
 .recipe-card button:focus {
-    outline: none; /* Remove focus outline */
+    outline: none;
 }
 
 .remove-button {
@@ -321,12 +309,12 @@ h2 {
     border: none;
     color: #fff;
     font-size: 20px;
-    width: 30px; /* Set the width and height to create a circle */
+    width: 30px;
     height: 30px;
-    border-radius: 50%; /* Make it a circle */
+    border-radius: 50%;
     cursor: pointer;
 }
 
 .remove-button:hover {
-    background-color: rgba(0, 0, 0, 0.1); /* Add a hover effect */
+    background-color: rgba(0, 0, 0, 0.1);
 }
