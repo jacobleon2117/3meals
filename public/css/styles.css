@@ -288,3 +288,21 @@ h2 {
     color: black;
     z-index: 1;
 }
+.recipe-card button {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.recipe-card button:hover {
+    background-color: #e05231;
+}
+
+.recipe-card button:focus {
+    outline: none; /* Remove focus outline */
+}
