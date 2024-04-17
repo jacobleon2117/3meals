@@ -306,6 +306,7 @@ h2 {
 .recipe-card button:focus {
     outline: none; /* Remove focus outline */
 }
+
 .remove-button {
     position: absolute;
     top: 5px;
@@ -313,11 +314,11 @@ h2 {
     background: none;
     border: none;
     color: #999;
-    font-size: 16px;
+    font-size: 14px; /* Make the button smaller */
     cursor: pointer;
     transition: color 0.3s ease;
-}
-
-.remove-button:hover {
-    color: #666;
+    width: 20px; /* Fix the width of the button */
+    height: 20px; /* Fix the height of the button */
+    line-height: 1; /* Center the "X" horizontally */
+    text-align: center; /* Center the "X" vertically */
 }
