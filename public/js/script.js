@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
         const addToFavoritesButton = document.createElement('button');
         addToFavoritesButton.textContent = 'Add to Favorites';
+        addToFavoritesButton.id = `addButton-${recipe.label.replace(/\s+/g, '-')}`; // Assign a unique ID
         addToFavoritesButton.addEventListener('click', function() {
             addToFavorites(recipe);
         });
