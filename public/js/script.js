@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         recipeCard.appendChild(recipeTitle);
 
         const recipeImage = document.createElement('img');
-        recipeImage.src = recipe.image;
+        recipeImage.src = recipe.image || 'images/placeholder_recipe.jpg'; // Provide a placeholder image URL
         recipeCard.appendChild(recipeImage);
 
         const caloriesInfo = document.createElement('p');
@@ -54,40 +54,42 @@ document.addEventListener('DOMContentLoaded', function() {
         return recipeCard;
     }
 
-    function addToFavorites(recipe) {
-        // Retrieve favorites from localStorage or initialize an empty array
-        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-        
-        // Check if the recipe already exists in favorites
-        const isDuplicate = favorites.some(favorite => favorite.label === recipe.label);
-        
-        if (!isDuplicate) {
-            // Add the selected recipe to favorites
-            favorites.push(recipe);
-            // Update favorites in localStorage
-            localStorage.setItem('favorites', JSON.stringify(favorites));
-            // Notify the user
-            alert('Recipe added to favorites!');
-        } else {
-            // Notify the user that the recipe is already in favorites
-            alert('This recipe is already in your favorites!');
-        }
-    }
+    // Rest of the script functions...
 
-    function fetchClosestMatches(query) {
-        fetch(`/api/closest-matches?q=${query}`)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                recipeList.innerHTML = '<p>No matching recipes found. Here are some suggestions:</p>';
-                data.matches.forEach(match => {
-                    const matchItem = document.createElement('p');
-                    matchItem.textContent = match;
-                    recipeList.appendChild(matchItem);
-                });
-            })
-            .catch(error => {
-                console.error('Error fetching closest matches:', error);
-            });
-    }
 });
+function addToFavorites(recipe) {
+    // Retrieve favorites from localStorage or initialize an empty array
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    
+    // Check if the recipe already exists in favorites
+    const isDuplicate = favorites.some(favorite => favorite.label === recipe.label);
+    
+    if (!isDuplicate) {
+        // Add the selected recipe to favorites
+        favorites.push(recipe);
+        // Update favorites in localStorage
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+        // Notify the user
+        alert('Recipe added to favorites!');
+    } else {
+        // Notify the user that the recipe is already in favorites
+        alert('This recipe is already in your favorites!');
+    }
+}
+
+function fetchClosestMatches(query) {
+    fetch(`/api/closest-matches?q=${query}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            recipeList.innerHTML = '<p>No matching recipes found. Here are some suggestions:</p>';
+            data.matches.forEach(match => {
+                const matchItem = document.createElement('p');
+                matchItem.textContent = match;
+                recipeList.appendChild(matchItem);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching closest matches:', error);
+        });
+}
