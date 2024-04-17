@@ -279,6 +279,7 @@ h2 {
     transform: translate(-50%, -50%);
     font-size: 2rem; /* Set the font size to 2rem */
     font-family: Arial, sans-serif; /* Use the same font family */
+    color: red;
 }
 
 .container {
