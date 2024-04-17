@@ -44,16 +44,17 @@ document.addEventListener('DOMContentLoaded', function() {
         recipeCard.appendChild(caloriesInfo);
 
         const addToFavoritesButton = document.createElement('button');
-        addToFavoritesButton.textContent = 'Add to Favorites';
+        addToFavoritesButton.textContent = isFavorite(recipe) ? 'Added!' : 'Add to Favorites'; // Check if the recipe is already in favorites
         addToFavoritesButton.addEventListener('click', function() {
-            addToFavorites(recipe, addToFavoritesButton);
+            toggleFavorite(recipe);
+            addToFavoritesButton.textContent = isFavorite(recipe) ? 'Added!' : 'Add to Favorites'; // Update button text
         });
         recipeCard.appendChild(addToFavoritesButton);
 
         return recipeCard;
     }
 
-    function addToFavorites(recipe, addButton) {
+    function addToFavorites(recipe) {
         // Retrieve favorites from localStorage or initialize an empty array
         const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
         
@@ -65,11 +66,34 @@ document.addEventListener('DOMContentLoaded', function() {
             favorites.push(recipe);
             // Update favorites in localStorage
             localStorage.setItem('favorites', JSON.stringify(favorites));
-            // Change button text
-            addButton.textContent = 'Added!';
+            // Notify the user
+            alert('Recipe added to favorites!');
         } else {
             // Notify the user that the recipe is already in favorites
             alert('This recipe is already in your favorites!');
         }
+    }
+
+    function isFavorite(recipe) {
+        // Retrieve favorites from localStorage or initialize an empty array
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        // Check if the recipe already exists in favorites
+        return favorites.some(favorite => favorite.label === recipe.label);
+    }
+
+    function toggleFavorite(recipe) {
+        // Retrieve favorites from localStorage or initialize an empty array
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        // Check if the recipe already exists in favorites
+        const index = favorites.findIndex(favorite => favorite.label === recipe.label);
+        if (index === -1) {
+            // Add the selected recipe to favorites
+            favorites.push(recipe);
+        } else {
+            // Remove the recipe from favorites
+            favorites.splice(index, 1);
+        }
+        // Update favorites in localStorage
+        localStorage.setItem('favorites', JSON.stringify(favorites));
     }
 });
