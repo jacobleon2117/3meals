@@ -324,6 +324,11 @@ h2 {
     font-size: 14px;
 }
 
+/* Add this CSS to make the "i" button smaller */
+.info-button {
+    font-size: 14px;
+}
+
 /* Add this CSS to show the ingredients box on hover */
 .recipe-card-info-box {
     display: none;
@@ -335,8 +340,6 @@ h2 {
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.recipe-card:hover .recipe-card-info-box {
-    display: block;
+    display: flex; /* Changed from "none" to "flex" */
+    flex-direction: column; /* Added to display ingredients in a column */
 }
