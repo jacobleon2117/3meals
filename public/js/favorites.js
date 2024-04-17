@@ -15,15 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const recipeCard = document.createElement('div');
         recipeCard.classList.add('recipe-card');
 
-        const removeButton = document.createElement('button');
-        removeButton.textContent = 'Remove'; // Changed button text to "Remove"
-        removeButton.classList.add('remove-button');
-        removeButton.addEventListener('click', function() {
-            removeFromFavorites(recipe);
-            recipeCard.remove();
-        });
-        recipeCard.appendChild(removeButton);
-
         const recipeTitle = document.createElement('h3');
         recipeTitle.textContent = recipe.label;
         recipeCard.appendChild(recipeTitle);
@@ -58,6 +49,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const instructions = document.createElement('p');
         instructions.textContent = recipe.instructions || 'No instructions available.';
         recipeCard.appendChild(instructions);
+
+        // Remove button
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove';
+        removeButton.classList.add('remove-button');
+        removeButton.addEventListener('click', function() {
+            removeFromFavorites(recipe);
+            recipeCard.remove();
+        });
+        recipeCard.appendChild(removeButton);
 
         return recipeCard;
     }
