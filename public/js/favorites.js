@@ -58,6 +58,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         recipeCard.appendChild(removeButton);
 
+        const infoButton = document.createElement('button');
+        infoButton.textContent = 'i';
+        infoButton.classList.add('info-button');
+        infoButton.addEventListener('mouseover', function() {
+            showIngredients(recipe);
+        });
+        infoButton.addEventListener('mouseout', function() {
+            hideIngredients();
+        });
+        recipeCard.appendChild(infoButton);
+
         return recipeCard;
     }
 
@@ -113,6 +124,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 card.replaceChild(addButton, existingButton);
             }
         });
+    }
+
+    function showIngredients(recipe) {
+        const infoBox = document.createElement('div');
+        infoBox.textContent = 'Ingredients:';
+        recipe.ingredients.forEach(ingredient => {
+            const ingredientItem = document.createElement('p');
+            ingredientItem.textContent = ingredient.text;
+            infoBox.appendChild(ingredientItem);
+        });
+        infoBox.classList.add('info-box');
+        document.body.appendChild(infoBox);
+    }
+
+    function hideIngredients() {
+        const infoBox = document.querySelector('.info-box');
+        if (infoBox) {
+            infoBox.remove();
+        }
     }
 
     updateRecipeCardButtons();
