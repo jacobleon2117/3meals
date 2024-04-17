@@ -19,6 +19,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const recipeCard = document.createElement('div');
         recipeCard.classList.add('recipe-card');
     
+        const removeButton = document.createElement('button');
+        removeButton.textContent = '×';
+        removeButton.classList.add('remove-button');
+        removeButton.addEventListener('click', function() {
+            removeFromFavorites(recipe);
+        });
+        recipeCard.appendChild(removeButton);
+    
         const recipeTitle = document.createElement('h3');
         recipeTitle.textContent = recipe.label;
         recipeCard.appendChild(recipeTitle);
@@ -28,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         recipeCard.appendChild(recipeImage);
     
         const caloriesInfo = document.createElement('p');
-        caloriesInfo.textContent = `Calories: ${recipe.calories.toFixed(1)}`;
+        caloriesInfo.textContent = `Calories: ${recipe.calories.toFixed(0)}`; // Round calories to the nearest whole number
         recipeCard.appendChild(caloriesInfo);
     
         // Ingredients
@@ -54,5 +62,24 @@ document.addEventListener('DOMContentLoaded', function() {
         recipeCard.appendChild(instructions);
     
         return recipeCard;
+    }
+
+    function removeFromFavorites(recipe) {
+        // Retrieve favorites from localStorage
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+        // Find index of recipe in favorites
+        const index = favorites.findIndex(favorite => favorite.label === recipe.label);
+
+        if (index !== -1) {
+            // Remove recipe from favorites
+            favorites.splice(index, 1);
+            
+            // Update favorites in localStorage
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+
+            // Re-display favorite recipes
+            displayFavoriteRecipes(favorites);
+        }
     }
 });

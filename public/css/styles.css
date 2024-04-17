@@ -306,3 +306,18 @@ h2 {
 .recipe-card button:focus {
     outline: none; /* Remove focus outline */
 }
+.remove-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.remove-button:hover {
+    color: #666;
+}
