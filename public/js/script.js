@@ -46,14 +46,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const addToFavoritesButton = document.createElement('button');
         addToFavoritesButton.textContent = 'Add to Favorites';
         addToFavoritesButton.addEventListener('click', function() {
-            addToFavorites(recipe);
+            addToFavorites(recipe, addToFavoritesButton);
         });
         recipeCard.appendChild(addToFavoritesButton);
 
         return recipeCard;
     }
 
-    function addToFavorites(recipe) {
+    function addToFavorites(recipe, addButton) {
         // Retrieve favorites from localStorage or initialize an empty array
         const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
         
@@ -65,8 +65,8 @@ document.addEventListener('DOMContentLoaded', function() {
             favorites.push(recipe);
             // Update favorites in localStorage
             localStorage.setItem('favorites', JSON.stringify(favorites));
-            // Notify the user
-            alert('Recipe added to favorites!');
+            // Change button text
+            addButton.textContent = 'Added!';
         } else {
             // Notify the user that the recipe is already in favorites
             alert('This recipe is already in your favorites!');
