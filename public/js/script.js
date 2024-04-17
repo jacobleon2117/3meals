@@ -2,12 +2,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchForm = document.getElementById('searchForm');
     const recipeList = document.getElementById('recipeList');
 
-    searchForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const query = document.getElementById('searchInput').value;
-        fetchRecipes(query);
-    });
+    // Check if the searchForm exists (only on index.html) before adding event listener
+    if (searchForm) {
+        searchForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const query = document.getElementById('searchInput').value;
+            fetchRecipes(query);
+        });
+    }
 
+    // Function to fetch recipes from the API
     function fetchRecipes(query) {
         fetch(`/api/recipes?q=${query}`)
             .then(response => response.json())
@@ -28,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
+    // Function to create a recipe card
     function createRecipeCard(recipe) {
         const recipeCard = document.createElement('div');
         recipeCard.classList.add('recipe-card');
@@ -44,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
         caloriesInfo.textContent = `Calories: ${recipe.calories.toFixed(1)}`;
         recipeCard.appendChild(caloriesInfo);
 
+        // Add "Add to Favorites" button
         const addToFavoritesButton = document.createElement('button');
         addToFavoritesButton.textContent = 'Add to Favorites';
         addToFavoritesButton.addEventListener('click', function() {
@@ -54,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return recipeCard;
     }
 
+    // Function to add a recipe to favorites
     function addToFavorites(recipe) {
         // Retrieve favorites from localStorage or initialize an empty array
         const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
@@ -74,6 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Function to fetch closest matches if no recipes found
     function fetchClosestMatches(query) {
         fetch(`/api/closest-matches?q=${query}`)
             .then(response => response.json())
@@ -89,5 +97,14 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => {
                 console.error('Error fetching closest matches:', error);
             });
+    }
+
+    // Display favorite recipes if on favorite.html
+    if (window.location.pathname.includes('favorites.html')) {
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        favorites.forEach(recipe => {
+            const recipeCard = createRecipeCard(recipe);
+            recipeList.appendChild(recipeCard);
+        });
     }
 });
