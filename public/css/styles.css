@@ -319,27 +319,24 @@ h2 {
     background-color: #e05231;
 }
 
-/* Add this to your CSS */
+/* Add this CSS to make the "i" button smaller */
 .info-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: transparent;
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-    color: #333;
+    font-size: 14px;
 }
 
-.info-box {
+/* Add this CSS to show the ingredients box on hover */
+.recipe-card-info-box {
+    display: none;
     position: absolute;
-    top: 50%;
+    top: 0;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     background-color: rgba(255, 255, 255, 0.9);
     padding: 10px;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    display: none;
-    z-index: 999;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.recipe-card:hover .recipe-card-info-box {
+    display: block;
 }
