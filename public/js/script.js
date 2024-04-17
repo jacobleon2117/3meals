@@ -1,12 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const searchForm = document.getElementById('searchForm');
     const recipeList = document.getElementById('recipeList');
 
-    searchForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const query = document.getElementById('searchInput').value;
-        fetchRecipes(query);
-    });
+    // Fetch recipes when the page loads
+    fetchRecipes('');
 
     function fetchRecipes(query) {
         fetch(`/api/recipes?q=${query}`)
@@ -90,4 +86,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error fetching closest matches:', error);
             });
     }
+
 });
+
