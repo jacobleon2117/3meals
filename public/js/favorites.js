@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         recipeCard.appendChild(ingredientsList);
 
-        // Instructions
         const instructionsTitle = document.createElement('h4');
         instructionsTitle.textContent = 'Instructions:';
         recipeCard.appendChild(instructionsTitle);
@@ -50,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
         instructions.textContent = recipe.instructions || 'No instructions available.';
         recipeCard.appendChild(instructions);
 
-        // Remove button
         const removeButton = document.createElement('button');
         removeButton.textContent = 'Remove';
         removeButton.classList.add('remove-button');
