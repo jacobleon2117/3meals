@@ -1,5 +1,5 @@
-# Product Name
-> Short blurb about what your product does.
+# 3Meals
+> The website links you to recipes to choose from and allows you to save your favorites
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
