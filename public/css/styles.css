@@ -271,14 +271,15 @@ h2 {
     text-align: center;
     margin-top: 20px;
 }
-/* Centered text */
+
 .centered {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: large;
-  }
+    font-size: 2rem; /* Set the font size to 2rem */
+    font-family: Arial, sans-serif; /* Use the same font family */
+}
 
 .container {
     position: relative;
