@@ -30,28 +30,29 @@ document.addEventListener('DOMContentLoaded', function() {
     function createRecipeCard(recipe) {
         const recipeCard = document.createElement('div');
         recipeCard.classList.add('recipe-card');
-
+    
         const recipeTitle = document.createElement('h3');
         recipeTitle.textContent = recipe.label;
         recipeCard.appendChild(recipeTitle);
-
+    
         const recipeImage = document.createElement('img');
         recipeImage.src = recipe.image;
         recipeCard.appendChild(recipeImage);
-
+    
         const caloriesInfo = document.createElement('p');
-        caloriesInfo.textContent = `Calories: ${recipe.calories.toFixed(1)}`;
+        caloriesInfo.textContent = `Calories: ${Math.round(recipe.calories)}`;
         recipeCard.appendChild(caloriesInfo);
-
+    
         const addToFavoritesButton = document.createElement('button');
         addToFavoritesButton.textContent = 'Add to Favorites';
         addToFavoritesButton.addEventListener('click', function() {
             addToFavorites(recipe);
         });
         recipeCard.appendChild(addToFavoritesButton);
-
+    
         return recipeCard;
     }
+    
 
     function addToFavorites(recipe) {
         // Retrieve favorites from localStorage or initialize an empty array
