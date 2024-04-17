@@ -66,11 +66,6 @@ document.addEventListener('DOMContentLoaded', function() {
             favorites.push(recipe);
             // Update favorites in localStorage
             localStorage.setItem('favorites', JSON.stringify(favorites));
-            // Notify the user
-            alert('Recipe added to favorites!');
-        } else {
-            // Notify the user that the recipe is already in favorites
-            alert('This recipe is already in your favorites!');
         }
     }
 });
