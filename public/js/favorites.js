@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const recipeList = document.getElementById('recipeList');
 
     // Retrieve favorite recipes from localStorage
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
     // Display favorite recipes
     displayFavoriteRecipes(favorites);
@@ -66,9 +66,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function removeFromFavorites(recipe) {
-        // Retrieve favorites from localStorage
-        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-
         // Find index of recipe in favorites
         const index = favorites.findIndex(favorite => favorite.label === recipe.label);
 
@@ -82,5 +79,54 @@ document.addEventListener('DOMContentLoaded', function() {
             // Re-display favorite recipes
             displayFavoriteRecipes(favorites);
         }
+    }
+
+    function isFavorite(recipe) {
+        return favorites.some(favorite => favorite.label === recipe.label);
+    }
+
+    function toggleFavorite(recipe) {
+        const index = favorites.findIndex(favorite => favorite.label === recipe.label);
+        if (index === -1) {
+            favorites.push(recipe);
+        } else {
+            favorites.splice(index, 1);
+        }
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+        displayFavoriteRecipes(favorites);
+    }
+
+    function updateAddToFavoritesButton(recipe) {
+        const addButton = document.createElement('button');
+        addButton.textContent = isFavorite(recipe) ? 'Already Added!' : 'Add to Favorites';
+        addButton.addEventListener('click', function() {
+            toggleFavorite(recipe);
+        });
+        return addButton;
+    }
+
+    function updateRecipeCardButtons() {
+        const recipeCards = document.querySelectorAll('.recipe-card');
+        recipeCards.forEach(card => {
+            // Extract recipe data from the card
+            const recipeTitle = card.querySelector('h3').textContent;
+            const recipeImage = card.querySelector('img').src;
+            const recipeCalories = parseInt(card.querySelector('.recipe-card-calories').textContent.split(' ')[1]); // Extracting calories and converting to integer
+    
+            // Create a recipe object with the extracted data
+            const recipe = {
+                label: recipeTitle,
+                image: recipeImage,
+                calories: recipeCalories
+                // Add more properties as needed
+            };
+    
+            // Update the add to favorites button
+            const addButton = updateAddToFavoritesButton(recipe);
+            const existingButton = card.querySelector('.add-button');
+            if (existingButton) {
+                card.replaceChild(addButton, existingButton);
+            }
+        });
     }
 });
