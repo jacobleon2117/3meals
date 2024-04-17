@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const recipeList = document.getElementById('recipeList');
-
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-
     displayFavoriteRecipes(favorites);
 
     function displayFavoriteRecipes(recipes) {
@@ -35,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         recipeCard.appendChild(recipeImage);
 
         const caloriesInfo = document.createElement('p');
+        caloriesInfo.classList.add('recipe-card-calories');
         caloriesInfo.textContent = `Calories: ${Math.round(recipe.calories)}`;
         recipeCard.appendChild(caloriesInfo);
 
@@ -65,7 +64,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function removeFromFavorites(recipe) {
         const index = favorites.findIndex(favorite => favorite.label === recipe.label);
-
         if (index !== -1) {
             favorites.splice(index, 1);
             localStorage.setItem('favorites', JSON.stringify(favorites));
@@ -91,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateAddToFavoritesButton(recipe) {
         const addButton = document.createElement('button');
         addButton.textContent = isFavorite(recipe) ? 'Already Added!' : 'Add to Favorites';
+        addButton.classList.add('add-button');
         addButton.addEventListener('click', function() {
             toggleFavorite(recipe);
         });
@@ -108,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 image: recipeImage,
                 calories: recipeCalories
             };
-    
+
             const addButton = updateAddToFavoritesButton(recipe);
             const existingButton = card.querySelector('.add-button');
             if (existingButton) {
@@ -116,4 +115,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    updateRecipeCardButtons();
 });
