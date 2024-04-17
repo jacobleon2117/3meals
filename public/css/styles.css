@@ -69,6 +69,17 @@ header {
     position: relative;
 }
 
+/* Specify a fixed height for each row */
+.recipe-card-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 1200px; /* Adjust as needed */
+    gap: 20px;
+    height: auto; /* Set a fixed height for each row */
+}
+
 .recipe-card:hover {
     transform: translateY(-5px);
 }
