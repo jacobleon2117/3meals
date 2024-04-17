@@ -66,6 +66,12 @@ document.addEventListener('DOMContentLoaded', function() {
             favorites.push(recipe);
             // Update favorites in localStorage
             localStorage.setItem('favorites', JSON.stringify(favorites));
+            // Change button text to "Added!"
+            const addToFavoritesButton = document.getElementById(`addButton-${recipe.label.replace(/\s+/g, '-')}`);
+            if (addToFavoritesButton) {
+                addToFavoritesButton.textContent = 'Added!';
+                addToFavoritesButton.disabled = true; // Disable the button after adding
+            }
         }
     }
 });
