@@ -318,28 +318,3 @@ h2 {
 .remove-button:hover {
     background-color: #e05231;
 }
-
-/* Add this CSS to make the "i" button smaller */
-.info-button {
-    font-size: 14px;
-}
-
-/* Add this CSS to make the "i" button smaller */
-.info-button {
-    font-size: 14px;
-}
-
-/* Add this CSS to show the ingredients box on hover */
-.recipe-card-info-box {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    display: flex; /* Changed from "none" to "flex" */
-    flex-direction: column; /* Added to display ingredients in a column */
-}
