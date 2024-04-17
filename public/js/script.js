@@ -44,15 +44,34 @@ document.addEventListener('DOMContentLoaded', function() {
         caloriesInfo.textContent = `Calories: ${recipe.calories.toFixed(1)}`;
         recipeCard.appendChild(caloriesInfo);
 
-        const ingredientsList = document.createElement('ul');
-        recipe.ingredients.forEach(ingredient => {
-            const ingredientItem = document.createElement('li');
-            ingredientItem.textContent = ingredient.text;
-            ingredientsList.appendChild(ingredientItem);
+        const addToFavoritesButton = document.createElement('button');
+        addToFavoritesButton.textContent = 'Add to Favorites';
+        addToFavoritesButton.addEventListener('click', function() {
+            addToFavorites(recipe);
         });
-        recipeCard.appendChild(ingredientsList);
+        recipeCard.appendChild(addToFavoritesButton);
 
         return recipeCard;
+    }
+
+    function addToFavorites(recipe) {
+        // Retrieve favorites from localStorage or initialize an empty array
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        
+        // Check if the recipe already exists in favorites
+        const isDuplicate = favorites.some(favorite => favorite.label === recipe.label);
+        
+        if (!isDuplicate) {
+            // Add the selected recipe to favorites
+            favorites.push(recipe);
+            // Update favorites in localStorage
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            // Notify the user
+            alert('Recipe added to favorites!');
+        } else {
+            // Notify the user that the recipe is already in favorites
+            alert('This recipe is already in your favorites!');
+        }
     }
 
     function fetchClosestMatches(query) {

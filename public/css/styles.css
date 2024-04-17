@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: black; /* Light Grey */
+    background-color: white; /* Light Grey */
     min-height: 200vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
@@ -14,7 +14,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background-color: wheat; /* Tomato */
+    background-color: wheat; /* Set header background to wheat */
     height: 70px;
 }
 
@@ -213,4 +213,45 @@ footer {
 
 .social-links a:hover {
     color: #ff6347; /* Change the link color on hover */
+}
+
+#favoritesButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px; /* Adjust the size of the star */
+    color: #ff6347; /* Set the color of the star */
+}
+
+#favoritesButton:hover {
+    color: #e05231; /* Change the color of the star on hover */
+}
+
+.home-button {
+    display: inline-block;
+    background-color: #ff6347; /* Button background color */
+    color: white; /* Button text color */
+    text-decoration: none; /* Remove underline */
+    padding: 10px 20px; /* Padding for the button */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    border: none; /* Remove border */
+    cursor: pointer; /* Add pointer cursor on hover */
+}
+
+.home-button:hover {
+    background-color: #e05231; /* Button background color on hover */
+}
+/* CSS for favorites.html */
+h1 {
+    text-align: center; /* Center the text horizontally */
+    margin-top: 20px; /* Add some top margin for spacing */
+}
+
+#favoritesButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px; /* Adjust the size of the star */
+    color: #ff6347; /* Set the color of the star */
 }
