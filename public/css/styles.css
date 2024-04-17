@@ -3,10 +3,10 @@ body {
     margin: 0;
     padding: 0;
     background-color: white; /* Set background color to white */
-    min-height: 200vh;
+    min-height: 200vh; 
     display: grid;
     grid-template-rows: auto 1fr auto;
-    min-height: 100vh;
+    min-height: 50vh;
 }
 
 header {
@@ -179,7 +179,6 @@ header {
     }
 }
 
-/* Revert the image positioning */
 .blur-image {
     filter: blur(5px);
     width: 100%;
@@ -189,7 +188,8 @@ header {
     margin: 0 auto;
     position: relative; /* Establishes a positioning context */
     z-index: 0;
-}
+} 
+
 
 /* Revert the footer positioning */
 footer {
@@ -255,4 +255,23 @@ h1 {
     cursor: pointer;
     font-size: 24px; /* Adjust the size of the star */
     color: #ff6347; /* Set the color of the star */
+}
+
+h2 {
+    text-align: center; /* Center the text horizontally */
+    margin-top: 20px; /* Add some top margin for spacing */
+}
+/* Centered text */
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+.container {
+    position: relative;
+    text-align: center;
+    color: black;
+    z-index: 1;
 }
