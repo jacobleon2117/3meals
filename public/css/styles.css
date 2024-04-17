@@ -215,18 +215,28 @@ footer {
     color: #ff6347;
 }
 
+/* Favorites Button */
 #favoritesButton {
     background: none;
     border: none;
     cursor: pointer;
     font-size: 24px;
     color: #ff6347;
+    transition: color 0.3s ease;
 }
 
 #favoritesButton:hover {
     color: #e05231;
 }
 
+#favoritesButton:focus {
+    outline: none; /* Remove focus outline */
+}
+
+/* Update the styles for consistency */
+#favoritesButton {
+    margin-right: 20px; /* Add some spacing between the button and other elements */
+}
 .home-button {
     display: inline-block;
     background-color: #ff6347;
